@@ -41,8 +41,14 @@ TagManager:
   - name: Background
     uniqueID: 1357326863
     locked: 0
+  - name: Teleporters
+    uniqueID: 2507197455
+    locked: 0
   - name: Ground
     uniqueID: 867327663
+    locked: 0
+  - name: Npcs
+    uniqueID: 2305730995
     locked: 0
   - name: Default
     uniqueID: 0

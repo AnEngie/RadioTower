@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda18c56e781c8b439169b3c1fca2c16, type: 3}
+  m_Name: Rat_Shop
+  m_EditorClassIdentifier: 
+  npcName: Rat
+  npcPortrait: {fileID: 21300000, guid: d138b223169e2f040a02be4ec3e130f9, type: 3}
+  dialogueLines:
+  - This is a test
+  - This line should continue on it's own
+  - This line should not continue on it's own
+  autoProgressLines: 000100
+  autoProgressDelay: 0.5
+  typingspeed: 0.02
+  voicesound: {fileID: 8300000, guid: de683cd4695a5014f804193e1ff590eb, type: 3}
+  voicePitch: 1

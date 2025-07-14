@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float moveSpeed;
     public bool facingRight = true;
-    public LayerMask interactableLayer;
 
     Vector2 moveInput;
 
@@ -92,14 +91,6 @@ public class PlayerController : MonoBehaviour
         {
             IsRunning = false;
             moveSpeed = walkSpeed;
-        }
-    }
-
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, interactableLayer) != null)
-        {
-            Debug.Log("AAAAAAAAH");
         }
     }
 }
