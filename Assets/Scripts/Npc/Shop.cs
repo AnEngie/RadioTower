@@ -7,13 +7,22 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
-    public GameObject dialoguePanel;
-    public TMP_Text dialogueText, nameText;
-    public Image portraitImage;
+
+    private GameObject dialoguePanel;
+    private TMP_Text dialogueText, nameText;
+    private Image portraitImage;
 
     private int dialogueIndex;
     private bool isTyping;
     private bool isDialogueActive;
+
+    void Start()
+    {
+        dialoguePanel = GameManager.Instance.dialoguePanel;
+        dialogueText = GameManager.Instance.dialogueText;
+        nameText = GameManager.Instance.nameText;
+        portraitImage = GameManager.Instance.portraitImage;
+    }
 
     public bool CanInteract()
     {
