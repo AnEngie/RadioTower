@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shop : MonoBehaviour, IInteractable
+public class DialogueManager : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
 
@@ -15,6 +15,8 @@ public class Shop : MonoBehaviour, IInteractable
     private int dialogueIndex;
     private bool isTyping;
     private bool isDialogueActive;
+
+    private Dialogue line;
 
     void Start()
     {
@@ -49,10 +51,9 @@ public class Shop : MonoBehaviour, IInteractable
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.npcName);
-        portraitImage.sprite = dialogueData.npcPortrait;
-
         dialoguePanel.SetActive(true);
+        
+        line = dialogueData.dialogueLines[dialogueIndex];
 
         StartCoroutine(TypeLine());
     }
@@ -62,11 +63,12 @@ public class Shop : MonoBehaviour, IInteractable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
+            dialogueText.SetText(line.text);
             isTyping = false;
         }
         else if (++dialogueIndex < dialogueData.dialogueLines.Length)
         {
+            line = dialogueData.dialogueLines[dialogueIndex];
             StartCoroutine(TypeLine());
         }
         else
@@ -80,7 +82,11 @@ public class Shop : MonoBehaviour, IInteractable
         isTyping = true;
         dialogueText.SetText("");
 
-        foreach (char letter in dialogueData.dialogueLines[dialogueIndex])
+        nameText.SetText(line.speaker.actorName);
+        
+        portraitImage.sprite = line.speaker.portrait;
+
+        foreach (char letter in dialogueData.dialogueLines[dialogueIndex].text)
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(dialogueData.typingspeed);
