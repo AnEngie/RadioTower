@@ -10,6 +10,7 @@ public class NPCDialogue : ScriptableObject
     public Dialogue[] dialogueLines;
     public bool[] autoProgressLines;
     public float autoProgressDelay = 1.5f;
+    public Options[] options;
     public float typingspeed = 0.05f;
     public AudioClip voicesound;
     public float voicePitch = 1f;
@@ -20,4 +21,11 @@ public class Dialogue
 {
     public Actor speaker;
     [TextArea(3, 5)] public string text;
+}
+
+[Serializable]
+public class Options
+{
+    public string optionText;
+    public NPCDialogue nextDialogue;
 }

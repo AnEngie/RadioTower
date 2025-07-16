@@ -14,15 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - speaker: {fileID: 11400000, guid: fc8da59a4053d0c498af3f3ce55d5ade, type: 2}
-    text: This is a test
+    text: Rat Test DIalogue
   - speaker: {fileID: 11400000, guid: 6d6a7e789a67e4d40b40c67c71502c47, type: 2}
-    text: This is also a test but then with the player
+    text: Player Test Dialogue
   - speaker: {fileID: 11400000, guid: 6d6a7e789a67e4d40b40c67c71502c47, type: 2}
-    text: This dialogue should continue on it's own
+    text: Auto Progress Test Dialogue
   - speaker: {fileID: 11400000, guid: fc8da59a4053d0c498af3f3ce55d5ade, type: 2}
-    text: This one should not
-  autoProgressLines: 000001
+    text: Choice Test Dialogue
+  autoProgressLines: 00000101
   autoProgressDelay: 0.5
+  options:
+  - optionText: Yes
+    nextDialogue: {fileID: 11400000, guid: 35cd9123f62eef545a34b285dcebdb92, type: 2}
+  - optionText: No
+    nextDialogue: {fileID: 11400000, guid: f67eea7563cead944b17dc5caeb7642c, type: 2}
   typingspeed: 0.025
   voicesound: {fileID: 0}
   voicePitch: 1

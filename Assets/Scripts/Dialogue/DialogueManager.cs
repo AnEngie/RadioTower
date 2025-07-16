@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
 
+    private Button[] choiceButtons;
     private GameObject dialoguePanel;
     private TMP_Text dialogueText, nameText;
     private Image portraitImage;
@@ -24,6 +25,10 @@ public class DialogueManager : MonoBehaviour, IInteractable
         dialogueText = GameManager.Instance.dialogueText;
         nameText = GameManager.Instance.nameText;
         portraitImage = GameManager.Instance.portraitImage;
+        choiceButtons = GameManager.Instance.choiceButon;
+
+        foreach (var button in choiceButtons)
+            button.gameObject.SetActive(false);
     }
 
     public bool CanInteract()
@@ -73,7 +78,7 @@ public class DialogueManager : MonoBehaviour, IInteractable
         }
         else
         {
-            EndDialogue();
+            ShowChoices();
         }
     }
 
@@ -98,6 +103,39 @@ public class DialogueManager : MonoBehaviour, IInteractable
         {
             yield return new WaitForSeconds(dialogueData.autoProgressDelay);
             NextLine();
+        }
+    }
+
+    private void ShowChoices()
+    {
+        if (dialogueData.options.Length > 0)
+        {
+            for (int i = 0; i < dialogueData.options.Length; i++)
+            {
+                var option = dialogueData.options[i];
+
+                choiceButtons[i].GetComponentInChildren<TMP_Text>().text = option.optionText;
+                choiceButtons[i].gameObject.SetActive(true);
+
+                choiceButtons[i].onClick.AddListener(() => ChooseOption(option.nextDialogue));
+            }
+        }
+        else
+        {
+            EndDialogue();
+        }
+    }
+
+    private void ChooseOption(NPCDialogue dialogue)
+    {
+        if (dialogue == null)
+        {
+            EndDialogue();
+        }
+        else
+        {
+            dialogueData = dialogue;
+            StartDialogue();
         }
     }
 
