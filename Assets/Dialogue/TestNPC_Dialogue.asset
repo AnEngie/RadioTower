@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - speaker: {fileID: 11400000, guid: fc8da59a4053d0c498af3f3ce55d5ade, type: 2}
-    text: Rat Test DIalogue
+    text: Rat Test Dialogue
   - speaker: {fileID: 11400000, guid: 6d6a7e789a67e4d40b40c67c71502c47, type: 2}
     text: Player Test Dialogue
   - speaker: {fileID: 11400000, guid: 6d6a7e789a67e4d40b40c67c71502c47, type: 2}
@@ -22,7 +22,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: fc8da59a4053d0c498af3f3ce55d5ade, type: 2}
     text: Choice Test Dialogue
   autoProgressLines: 00000101
-  autoProgressDelay: 0.5
+  autoProgressDelay: 0.25
   options:
   - optionText: Yes
     nextDialogue: {fileID: 11400000, guid: 35cd9123f62eef545a34b285dcebdb92, type: 2}
