@@ -108,8 +108,12 @@ public class DialogueManager : MonoBehaviour, IInteractable
 
     private void ShowChoices()
     {
+        ClearChoices();
+
         if (dialogueData.options.Length > 0)
         {
+            isDialogueActive = true;
+
             for (int i = 0; i < dialogueData.options.Length; i++)
             {
                 var option = dialogueData.options[i];
@@ -134,14 +138,25 @@ public class DialogueManager : MonoBehaviour, IInteractable
         }
         else
         {
+            ClearChoices();
             dialogueData = dialogue;
             StartDialogue();
+        }
+    }
+
+    private void ClearChoices()
+    {
+        foreach (var button in choiceButtons)
+        {
+            button.gameObject.SetActive(false);
+            button.onClick.RemoveAllListeners();
         }
     }
 
     public void EndDialogue()
     {
         StopAllCoroutines();
+        ClearChoices();
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
