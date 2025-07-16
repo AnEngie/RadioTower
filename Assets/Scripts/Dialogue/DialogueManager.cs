@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour, IInteractable
     private int dialogueIndex;
     private bool isTyping;
     private bool isDialogueActive;
+    private bool isChoicesActive;
 
     private Dialogue line;
 
@@ -38,7 +39,7 @@ public class DialogueManager : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (dialogueData == null && !isDialogueActive)
+        if ((dialogueData == null && !isDialogueActive) || isChoicesActive)
             return;
 
         if (isDialogueActive)
@@ -151,6 +152,8 @@ public class DialogueManager : MonoBehaviour, IInteractable
             button.gameObject.SetActive(false);
             button.onClick.RemoveAllListeners();
         }
+
+        isChoicesActive = false;
     }
 
     public void EndDialogue()
