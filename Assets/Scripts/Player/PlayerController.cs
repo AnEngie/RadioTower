@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public bool facingRight = true;
 
+    private static PlayerController Instance;
+
     Vector2 moveInput;
 
     [SerializeField]
@@ -52,6 +54,11 @@ public class PlayerController : MonoBehaviour
         moveSpeed = walkSpeed;
     }
 
+    private void Start()
+    {
+        Instance = this;   
+    }
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
@@ -63,7 +70,8 @@ public class PlayerController : MonoBehaviour
 
         IsMoving = moveInput != Vector2.zero;
 
-        SwitchFacingDirection(moveInput);
+        if (Instance.enabled == true)
+            SwitchFacingDirection(moveInput);
     }
 
     private void SwitchFacingDirection(Vector2 moveInput)
