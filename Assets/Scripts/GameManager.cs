@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text dialogueText, nameText;
     public Image portraitImage;
     public Button[] choiceButon;
+    public PlayerController PlayerMovement;
 
     public static GameManager Instance;
     

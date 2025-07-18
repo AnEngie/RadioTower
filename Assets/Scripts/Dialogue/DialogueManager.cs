@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
 
+    private GameManager gameManager;
     private Button[] choiceButtons;
     private GameObject dialoguePanel;
     private TMP_Text dialogueText, nameText;
@@ -18,15 +19,20 @@ public class DialogueManager : MonoBehaviour, IInteractable
     private bool isDialogueActive;
     private bool isChoicesActive;
 
+    private PlayerController playerMovement;
+
     private Dialogue line;
 
     void Start()
     {
-        dialoguePanel = GameManager.Instance.dialoguePanel;
-        dialogueText = GameManager.Instance.dialogueText;
-        nameText = GameManager.Instance.nameText;
-        portraitImage = GameManager.Instance.portraitImage;
-        choiceButtons = GameManager.Instance.choiceButon;
+        gameManager = GameManager.Instance;
+
+        dialoguePanel = gameManager.dialoguePanel;
+        dialogueText = gameManager.dialogueText;
+        nameText = gameManager.nameText;
+        portraitImage = gameManager.portraitImage;
+        choiceButtons = gameManager.choiceButon;
+        playerMovement = gameManager.PlayerMovement;
 
         foreach (var button in choiceButtons)
             button.gameObject.SetActive(false);
@@ -56,6 +62,7 @@ public class DialogueManager : MonoBehaviour, IInteractable
     {
         isDialogueActive = true;
         dialogueIndex = 0;
+        playerMovement.enabled = false;
 
         dialoguePanel.SetActive(true);
         
@@ -163,5 +170,6 @@ public class DialogueManager : MonoBehaviour, IInteractable
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
+        playerMovement.enabled = true;
     }
 }
