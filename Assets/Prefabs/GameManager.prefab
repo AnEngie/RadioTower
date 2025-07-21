@@ -49,7 +49,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   dialoguePanel: {fileID: 0}
   dialogueText: {fileID: 0}
   nameText: {fileID: 0}
   portraitImage: {fileID: 0}
+  choiceButon:
+  - {fileID: 0}
+  - {fileID: 0}
+  PlayerMovement: {fileID: 0}
