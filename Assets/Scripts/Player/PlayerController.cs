@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float moveSpeed;
-    public bool facingRight = true;
 
     private static PlayerController Instance;
 
@@ -47,10 +47,13 @@ public class PlayerController : MonoBehaviour
     }
 
     Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         moveSpeed = walkSpeed;
     }
 
@@ -76,15 +79,13 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchFacingDirection(Vector2 moveInput)
     {
-        if (moveInput.x > 0 && !facingRight)
+        if (moveInput.x > 0 && spriteRenderer.flipX)
         {
-            facingRight = true;
-            transform.localScale *= new Vector2(-1, 1);
+            spriteRenderer.flipX = false;
         }
-        else if (moveInput.x < 0 && facingRight)
+        else if (moveInput.x < 0 && !spriteRenderer.flipX)
         {
-            facingRight = false;
-            transform.localScale *= new Vector2(-1, 1);
+            spriteRenderer.flipX = true;
         }
     }
 
