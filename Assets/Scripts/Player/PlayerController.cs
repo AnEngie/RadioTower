@@ -57,11 +57,6 @@ public class PlayerController : MonoBehaviour
         moveSpeed = walkSpeed;
     }
 
-    private void Start()
-    {
-        Instance = this;   
-    }
-
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
@@ -73,19 +68,20 @@ public class PlayerController : MonoBehaviour
 
         IsMoving = moveInput != Vector2.zero;
 
-        if (Instance.enabled == true)
+        if (isActiveAndEnabled)
             SwitchFacingDirection(moveInput);
     }
 
     private void SwitchFacingDirection(Vector2 moveInput)
     {
-        if (moveInput.x > 0 && spriteRenderer.flipX)
+        switch (moveInput.x)
         {
-            spriteRenderer.flipX = false;
-        }
-        else if (moveInput.x < 0 && !spriteRenderer.flipX)
-        {
-            spriteRenderer.flipX = true;
+            case > 0:
+                spriteRenderer.flipX = false;
+                break;
+            case < 0:
+                spriteRenderer.flipX = true;
+                break;
         }
     }
 
