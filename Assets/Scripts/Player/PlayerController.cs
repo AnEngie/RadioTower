@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float moveSpeed;
 
-    private static PlayerController Instance;
-
     Vector2 moveInput;
 
     [SerializeField]

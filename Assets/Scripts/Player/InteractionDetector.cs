@@ -15,7 +15,7 @@ public class InteractionDetector : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && Time.timeScale != 0)
         {
             interactableInRange?.Interact();
         }
