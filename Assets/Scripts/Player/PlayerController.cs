@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
         IsMoving = moveInput != Vector2.zero;
 
-        if (isActiveAndEnabled)
+        if (isActiveAndEnabled && Time.timeScale != 0)
             SwitchFacingDirection(moveInput);
     }
 

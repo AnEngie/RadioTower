@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Image portraitImage;
     public Button[] choiceButon;
     public PlayerController PlayerMovement;
+    public PauseMenu pauseMenu;
 
     public static GameManager Instance;
     
