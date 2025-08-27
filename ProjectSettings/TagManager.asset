@@ -52,11 +52,17 @@ TagManager:
   - name: Npcs
     uniqueID: 2305730995
     locked: 0
+  - name: WalkerBack
+    uniqueID: 3368371437
+    locked: 0
   - name: Icons
     uniqueID: 2353030603
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WalkerFront
+    uniqueID: 1926932395
     locked: 0
   - name: Infront
     uniqueID: 2379629283

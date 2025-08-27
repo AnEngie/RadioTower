@@ -6,8 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class VehicleMover : MonoBehaviour
 {
-    public float moveSpeed = 8f;
-    public int dir = 1;
+    public float maxMoveSpeed = 8f;
+    public float minMoveSpeed = 1f;
+    private float moveSpeed;
+    public float dir = 1;
     Rigidbody rb;
     SpriteRenderer spriteRenderer;
 
@@ -22,11 +24,11 @@ public class VehicleMover : MonoBehaviour
         switch (gameObject.transform.position.x)
         {
             case > 0:
-                dir = -1;
+                moveSpeed = -Random.Range(minMoveSpeed, maxMoveSpeed);
                 spriteRenderer.flipX = true;
                 break;
             case < 0:
-                dir = 1;
+                moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
                 spriteRenderer.flipX = false;
                 break;
         }
@@ -34,6 +36,6 @@ public class VehicleMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(dir * moveSpeed, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(moveSpeed, rb.velocity.y, rb.velocity.z);
     }
 }
